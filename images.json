@@ -2,87 +2,109 @@
   "items": [
     {
       "card": "card/card1.jpg",
-      "background": "bg/bg1.jpg"
+      "background": "bg/bg1.jpg",
+      "label": "Memory 1"
     },
     {
       "card": "card/card10.jpg",
-      "background": "bg/bg10.jpg"
+      "background": "bg/bg10.jpg",
+      "label": "Memory 10"
     },
     {
       "card": "card/card11.jpg",
-      "background": "bg/bg11.jpg"
+      "background": "bg/bg11.jpg",
+      "label": "Memory 11"
     },
     {
       "card": "card/card12.jpg",
-      "background": "bg/bg12.jpg"
+      "background": "bg/bg12.jpg",
+      "label": "Memory 12"
     },
     {
       "card": "card/card13.jpg",
-      "background": "bg/bg13.jpg"
+      "background": "bg/bg13.jpg",
+      "label": "Memory 13"
     },
     {
       "card": "card/card14.jpg",
-      "background": "bg/bg14.jpg"
+      "background": "bg/bg14.jpg",
+      "label": "Memory 14"
     },
     {
       "card": "card/card15.jpg",
-      "background": "bg/bg15.jpg"
+      "background": "bg/bg15.jpg",
+      "label": "Memory 15"
     },
     {
       "card": "card/card16.jpg",
-      "background": "bg/bg16.jpg"
+      "background": "bg/bg16.jpg",
+      "label": "Memory 16"
     },
     {
       "card": "card/card17.jpg",
-      "background": "bg/bg17.jpg"
+      "background": "bg/bg17.jpg",
+      "label": "Featured ✨",
+      "alwaysOnTop": true
     },
     {
       "card": "card/card18.jpg",
-      "background": "bg/bg18.jpg"
+      "background": "bg/bg18.jpg",
+      "label": "Memory 18"
     },
     {
       "card": "card/card19.jpg",
-      "background": "bg/bg19.jpg"
+      "background": "bg/bg19.jpg",
+      "label": "Memory 19"
     },
     {
       "card": "card/card2.jpg",
-      "background": "bg/bg2.jpg"
+      "background": "bg/bg2.jpg",
+      "label": "Memory 2"
     },
     {
       "card": "card/card20.jpg",
-      "background": "bg/bg20.jpg"
+      "background": "bg/bg20.jpg",
+      "label": "Memory 20"
     },
     {
       "card": "card/card21.jpg",
-      "background": "bg/bg21.jpg"
+      "background": "bg/bg21.jpg",
+      "label": "Memory 21"
     },
     {
       "card": "card/card3.jpg",
-      "background": "bg/bg3.jpg"
+      "background": "bg/bg3.jpg",
+      "label": "Memory 3"
     },
     {
       "card": "card/card4.jpg",
-      "background": "bg/bg4.jpg"
+      "background": "bg/bg4.jpg",
+      "label": "Memory 4"
     },
     {
       "card": "card/card5.jpg",
-      "background": "bg/bg5.jpg"
+      "background": "bg/bg5.jpg",
+      "label": "Memory 5"
     },
     {
       "card": "card/card6.jpg",
-      "background": "bg/bg6.jpg"
+      "background": "bg/bg6.jpg",
+      "label": "Memory 6"
     },
     {
       "card": "card/card7.jpg",
-      "background": "bg/bg7.jpg"
+      "background": "bg/bg7.jpg",
+      "label": "Memory 7"
     },
     {
       "card": "card/card8.jpg",
-      "background": "bg/bg8.jpg"
+      "background": "bg/bg8.jpg",
+      "label": "Memory 8"
     },
     {
       "card": "card/card9.jpg",
-      "background": "bg/bg9.jpg"
+      "background": "bg/bg9.jpg",
+      "label": "Memory 9"
     }
   ]
 }
