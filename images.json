@@ -1,88 +1,110 @@
 {
   "items": [
     {
+      "card": "card/card17.jpg",
+      "background": "bg/bg17.jpg",
+      "label": "Hi ✨",
+      "alwaysOnTop": true
+    },
+    {
       "card": "card/card1.jpg",
-      "background": "bg/bg1.jpg"
+      "background": "bg/bg1.jpg",
+      "label": "I wanna tell u something"
     },
     {
       "card": "card/card10.jpg",
-      "background": "bg/bg10.jpg"
+      "background": "bg/bg10.jpg",
+      "label": "pls keep dragging"
     },
     {
       "card": "card/card11.jpg",
-      "background": "bg/bg11.jpg"
+      "background": "bg/bg11.jpg",
+      "label": "u r amazing ❤️"
     },
     {
       "card": "card/card12.jpg",
-      "background": "bg/bg12.jpg"
+      "background": "bg/bg12.jpg",
+      "label": "most beautiful person on earth 💯"
     },
     {
       "card": "card/card13.jpg",
-      "background": "bg/bg13.jpg"
+      "background": "bg/bg13.jpg",
+      "label": "and cutest 🎀"
     },
     {
       "card": "card/card14.jpg",
-      "background": "bg/bg14.jpg"
+      "background": "bg/bg14.jpg",
+      "label": "and since I've met u"
     },
     {
       "card": "card/card15.jpg",
-      "background": "bg/bg15.jpg"
+      "background": "bg/bg15.jpg",
+      "label": "I feel very lucky"
     },
     {
       "card": "card/card16.jpg",
-      "background": "bg/bg16.jpg"
-    },
-    {
-      "card": "card/card17.jpg",
-      "background": "bg/bg17.jpg"
+      "background": "bg/bg16.jpg",
+      "label": "everyday..."
     },
     {
       "card": "card/card18.jpg",
-      "background": "bg/bg18.jpg"
+      "background": "bg/bg18.jpg",
+      "label": "and I have a..."
     },
     {
       "card": "card/card19.jpg",
-      "background": "bg/bg19.jpg"
+      "background": "bg/bg19.jpg",
+      "label": "crush on you... 🤭"
     },
     {
       "card": "card/card2.jpg",
-      "background": "bg/bg2.jpg"
+      "background": "bg/bg2.jpg",
+      "label": "I love u 💞"
     },
     {
       "card": "card/card20.jpg",
-      "background": "bg/bg20.jpg"
+      "background": "bg/bg20.jpg",
+      "label": "this is a ->"
     },
     {
       "card": "card/card21.jpg",
-      "background": "bg/bg21.jpg"
+      "background": "bg/bg21.jpg",
+      "label": "small gift for u 🔆"
     },
     {
       "card": "card/card3.jpg",
-      "background": "bg/bg3.jpg"
+      "background": "bg/bg3.jpg",
+      "label": "hope you like it 💯"
     },
     {
       "card": "card/card4.jpg",
-      "background": "bg/bg4.jpg"
+      "background": "bg/bg4.jpg",
+      "label": ":)"
     },
     {
       "card": "card/card5.jpg",
-      "background": "bg/bg5.jpg"
+      "background": "bg/bg5.jpg",
+      "label": ":->"
     },
     {
       "card": "card/card6.jpg",
-      "background": "bg/bg6.jpg"
+      "background": "bg/bg6.jpg",
+      "label": "and i'm very happy"
     },
     {
       "card": "card/card7.jpg",
-      "background": "bg/bg7.jpg"
+      "background": "bg/bg7.jpg",
+      "label": "that you're"
     },
     {
       "card": "card/card8.jpg",
-      "background": "bg/bg8.jpg"
+      "background": "bg/bg8.jpg",
+      "label": "my best friend! 😊"
     },
     {
       "card": "card/card9.jpg",
-      "background": "bg/bg9.jpg"
+      "background": "bg/bg9.jpg",
+      "label": "stay happy and keep smiling"
     }
   ]
 }
