@@ -51,13 +51,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            perspective: 1200px;
+            perspective: 2000px;
         }
 
         .carousel-item {
             position: absolute;
-            width: 250px;
-            height: 350px;
+            width: 400px;
+            height: 550px;
             transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
             border-radius: 20px;
             overflow: hidden;
@@ -69,6 +69,22 @@
             height: 100%;
             object-fit: cover;
             display: block;
+        }
+
+        .card-label {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(10px);
+            z-index: 10;
+            pointer-events: none;
         }
 
         .instructions {
@@ -106,7 +122,6 @@
     </div>
 
     <script>
-        // CONFIGURATION
         const imageFolder = 'images';
         
         let carouselData = [];
@@ -121,7 +136,6 @@
         const instructions = document.getElementById('instructions');
         const background = document.getElementById('background');
 
-        // Load images from JSON file
         async function loadImages() {
             try {
                 const response = await fetch('images.json');
@@ -151,6 +165,11 @@
                 img.src = `${imageFolder}/${carouselData[i].card}`;
                 item.appendChild(img);
                 
+                const label = document.createElement('div');
+                label.className = 'card-label';
+                label.textContent = `Card ${i + 1}`;
+                item.appendChild(label);
+                
                 track.appendChild(item);
             }
         }
@@ -164,18 +183,14 @@
             const totalImages = carouselData.length;
             const angleStep = (Math.PI * 2) / totalImages;
             
-            // Normalize rotation to 0-2π range
             let normalizedRotation = ((currentRotation % (Math.PI * 2)) + (Math.PI * 2)) % (Math.PI * 2);
             
-            // Find which card is closest to front (0 radians position)
             let closestIndex = 0;
             let minDistance = Math.PI * 2;
             
             for (let i = 0; i < totalImages; i++) {
                 const angle = (i * angleStep) + normalizedRotation;
                 const normalizedAngle = ((angle % (Math.PI * 2)) + (Math.PI * 2)) % (Math.PI * 2);
-                
-                // Distance from front position (0 or 2π)
                 const distance = Math.min(normalizedAngle, Math.PI * 2 - normalizedAngle);
                 
                 if (distance < minDistance) {
@@ -193,21 +208,18 @@
             const items = track.querySelectorAll('.carousel-item');
             const totalImages = items.length;
             const angleStep = (Math.PI * 2) / totalImages;
-            const radius = 600;
+            const radius = 900;
 
             items.forEach((item, i) => {
                 const angle = (i * angleStep) + currentRotation;
                 
-                // Calculate position on circular path
                 const x = Math.sin(angle) * radius;
                 const z = Math.cos(angle) * radius;
                 const y = Math.sin(angle * 2) * 50;
                 
-                // Calculate scale and opacity based on z position
-                const scale = 0.6 + (z + radius) / (radius * 2) * 0.6;
+                const scale = 0.4 + (z + radius) / (radius * 2) * 0.6;
                 const opacity = 0.3 + (z + radius) / (radius * 2) * 0.7;
                 
-                // Rotation for card effect
                 const rotateY = -(angle * 180 / Math.PI);
                 const rotateX = Math.sin(angle) * 10;
                 
@@ -221,7 +233,6 @@
                 item.style.zIndex = Math.round(z + 1000);
             });
 
-            // Update background based on active card
             const activeIndex = getActiveCardIndex();
             if (activeIndex !== currentActiveIndex) {
                 currentActiveIndex = activeIndex;
@@ -238,17 +249,14 @@
             animate();
         }
 
-        // Mouse move handler
         container.addEventListener('mousemove', (e) => {
             if (carouselData.length === 0) return;
             
             mouseX = e.clientX;
-            
             const normalizedX = (mouseX / window.innerWidth) - 0.5;
             targetRotation = normalizedX * Math.PI * 2;
         });
 
-        // Initialize
         loadImages();
     </script>
 </body>
