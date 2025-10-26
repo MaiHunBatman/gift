@@ -173,11 +173,21 @@
         const bgMusic = document.getElementById('bgMusic');
         const musicControl = document.getElementById('musicControl');
     
-        let musicPlaying = false;  // Start as false
+        let musicPlaying = false;
         let userInteracted = false;
         
         // Initialize music control button
         musicControl.textContent = '🔊 Music On';
+        
+        // PLAY MUSIC IMMEDIATELY ON PAGE LOAD
+        bgMusic.play().then(() => {
+            musicPlaying = true;
+            musicControl.textContent = '🔊 Music On';
+        }).catch(() => {
+            // Autoplay blocked by browser, show as off
+            musicPlaying = false;
+            musicControl.textContent = '🔇 Music Off';
+        });
         
         musicControl.addEventListener('click', () => {
             userInteracted = true;
@@ -197,15 +207,14 @@
             }
         });
         
-        // Try to play music on any user interaction
+        // Fallback: Try to play music on first user interaction if autoplay was blocked
         function tryPlayMusic() {
-            if (!userInteracted && !musicPlaying) {  // Now this will work!
+            if (!userInteracted && !musicPlaying) {
                 bgMusic.play().then(() => {
                     musicPlaying = true;
                     musicControl.textContent = '🔊 Music On';
                     userInteracted = true;
                 }).catch(() => {
-                    // Silently fail, user can click button
                     musicControl.textContent = '🔇 Music Off';
                 });
             }
