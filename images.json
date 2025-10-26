@@ -1,6 +1,12 @@
 {
   "items": [
     {
+      "card": "card/card17.jpg",
+      "background": "bg/bg17.jpg",
+      "label": "Featured ✨",
+      "alwaysOnTop": true
+    },
+    {
       "card": "card/card1.jpg",
       "background": "bg/bg1.jpg",
       "label": "Memory 1"
@@ -39,12 +45,6 @@
       "card": "card/card16.jpg",
       "background": "bg/bg16.jpg",
       "label": "Memory 16"
-    },
-    {
-      "card": "card/card17.jpg",
-      "background": "bg/bg17.jpg",
-      "label": "Featured ✨",
-      "alwaysOnTop": true
     },
     {
       "card": "card/card18.jpg",
