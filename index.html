@@ -173,12 +173,12 @@
         const bgMusic = document.getElementById('bgMusic');
         const musicControl = document.getElementById('musicControl');
     
-        let musicPlaying = true;
+        let musicPlaying = false;  // Start as false
         let userInteracted = false;
-    
+        
         // Initialize music control button
         musicControl.textContent = '🔊 Music On';
-    
+        
         musicControl.addEventListener('click', () => {
             userInteracted = true;
             if (musicPlaying) {
@@ -196,20 +196,21 @@
                 });
             }
         });
-    
+        
         // Try to play music on any user interaction
         function tryPlayMusic() {
-            if (!userInteracted && !musicPlaying) {
+            if (!userInteracted && !musicPlaying) {  // Now this will work!
                 bgMusic.play().then(() => {
                     musicPlaying = true;
                     musicControl.textContent = '🔊 Music On';
                     userInteracted = true;
                 }).catch(() => {
                     // Silently fail, user can click button
+                    musicControl.textContent = '🔇 Music Off';
                 });
             }
         }
-    
+        
         container.addEventListener('mousedown', tryPlayMusic, { once: true });
         container.addEventListener('touchstart', tryPlayMusic, { once: true });
         document.addEventListener('click', tryPlayMusic, { once: true });
