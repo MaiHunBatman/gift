@@ -173,11 +173,11 @@
         const bgMusic = document.getElementById('bgMusic');
         const musicControl = document.getElementById('musicControl');
     
-        let musicPlaying = false;
+        let musicPlaying = true;
         let userInteracted = false;
     
         // Initialize music control button
-        musicControl.textContent = '🔇 Music Off';
+        musicControl.textContent = '🔊 Music On';
     
         musicControl.addEventListener('click', () => {
             userInteracted = true;
