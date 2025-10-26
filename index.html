@@ -167,7 +167,7 @@
                 
                 const label = document.createElement('div');
                 label.className = 'card-label';
-                label.textContent = `Card ${i + 1}`;
+                label.textContent = carouselData[i].label || `Card ${i + 1}`;
                 item.appendChild(label);
                 
                 track.appendChild(item);
@@ -230,7 +230,13 @@
                     scale(${scale})
                 `;
                 item.style.opacity = opacity;
-                item.style.zIndex = Math.round(z + 1000);
+                
+                // Check if this card should always be on top
+                if (carouselData[i].alwaysOnTop) {
+                    item.style.zIndex = 9999;
+                } else {
+                    item.style.zIndex = Math.round(z + 1000);
+                }
             });
 
             const activeIndex = getActiveCardIndex();
@@ -259,5 +265,6 @@
 
         loadImages();
     </script>
+    
 </body>
 </html>
