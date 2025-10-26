@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curved Image Carousel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            position: relative;
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            filter: blur(20px);
+            z-index: 0;
+            transition: background-image 0.8s ease-in-out;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .carousel-track {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1200px;
+        }
+
+        .carousel-item {
+            position: absolute;
+            width: 250px;
+            height: 350px;
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .instructions {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+            text-align: center;
+            z-index: 10;
+            letter-spacing: 1px;
+        }
+
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #666;
+            font-size: 18px;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <div class="background" id="background"></div>
+    
+    <div class="carousel-container" id="carouselContainer">
+        <div class="carousel-track" id="carouselTrack"></div>
+        <div class="loading" id="loading">Loading images...</div>
+        <div class="instructions" style="display: none;" id="instructions">
+            Move your mouse to navigate
+        </div>
+    </div>
+
+    <script>
+        // CONFIGURATION
+        const imageFolder = 'images';
+        
+        let carouselData = [];
+        let mouseX = window.innerWidth / 2;
+        let targetRotation = 0;
+        let currentRotation = 0;
+        let currentActiveIndex = 0;
+
+        const container = document.getElementById('carouselContainer');
+        const track = document.getElementById('carouselTrack');
+        const loading = document.getElementById('loading');
+        const instructions = document.getElementById('instructions');
+        const background = document.getElementById('background');
+
+        // Load images from JSON file
+        async function loadImages() {
+            try {
+                const response = await fetch('images.json');
+                const data = await response.json();
+                carouselData = data.items;
+                loading.style.display = 'none';
+                instructions.style.display = 'block';
+                renderCarousel();
+                updateBackground(0);
+                startAnimation();
+            } catch (error) {
+                loading.textContent = 'Error loading images. Make sure images.json exists.';
+                console.error('Error loading images:', error);
+            }
+        }
+
+        function renderCarousel() {
+            if (carouselData.length === 0) return;
+            
+            track.innerHTML = '';
+
+            for (let i = 0; i < carouselData.length; i++) {
+                const item = document.createElement('div');
+                item.className = 'carousel-item';
+                
+                const img = document.createElement('img');
+                img.src = `${imageFolder}/${carouselData[i].card}`;
+                item.appendChild(img);
+                
+                track.appendChild(item);
+            }
+        }
+
+        function updateBackground(index) {
+            if (carouselData.length === 0) return;
+            background.style.backgroundImage = `url('${imageFolder}/${carouselData[index].background}')`;
+        }
+
+        function getActiveCardIndex() {
+            const totalImages = carouselData.length;
+            const angleStep = (Math.PI * 2) / totalImages;
+            
+            // Normalize rotation to 0-2π range
+            let normalizedRotation = ((currentRotation % (Math.PI * 2)) + (Math.PI * 2)) % (Math.PI * 2);
+            
+            // Find which card is closest to front (0 radians position)
+            let closestIndex = 0;
+            let minDistance = Math.PI * 2;
+            
+            for (let i = 0; i < totalImages; i++) {
+                const angle = (i * angleStep) + normalizedRotation;
+                const normalizedAngle = ((angle % (Math.PI * 2)) + (Math.PI * 2)) % (Math.PI * 2);
+                
+                // Distance from front position (0 or 2π)
+                const distance = Math.min(normalizedAngle, Math.PI * 2 - normalizedAngle);
+                
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    closestIndex = i;
+                }
+            }
+            
+            return closestIndex;
+        }
+
+        function updateCarousel() {
+            if (carouselData.length === 0) return;
+
+            const items = track.querySelectorAll('.carousel-item');
+            const totalImages = items.length;
+            const angleStep = (Math.PI * 2) / totalImages;
+            const radius = 600;
+
+            items.forEach((item, i) => {
+                const angle = (i * angleStep) + currentRotation;
+                
+                // Calculate position on circular path
+                const x = Math.sin(angle) * radius;
+                const z = Math.cos(angle) * radius;
+                const y = Math.sin(angle * 2) * 50;
+                
+                // Calculate scale and opacity based on z position
+                const scale = 0.6 + (z + radius) / (radius * 2) * 0.6;
+                const opacity = 0.3 + (z + radius) / (radius * 2) * 0.7;
+                
+                // Rotation for card effect
+                const rotateY = -(angle * 180 / Math.PI);
+                const rotateX = Math.sin(angle) * 10;
+                
+                item.style.transform = `
+                    translate3d(${x}px, ${y}px, ${z}px)
+                    rotateY(${rotateY}deg)
+                    rotateX(${rotateX}deg)
+                    scale(${scale})
+                `;
+                item.style.opacity = opacity;
+                item.style.zIndex = Math.round(z + 1000);
+            });
+
+            // Update background based on active card
+            const activeIndex = getActiveCardIndex();
+            if (activeIndex !== currentActiveIndex) {
+                currentActiveIndex = activeIndex;
+                updateBackground(activeIndex);
+            }
+        }
+
+        function startAnimation() {
+            function animate() {
+                currentRotation += (targetRotation - currentRotation) * 0.05;
+                updateCarousel();
+                requestAnimationFrame(animate);
+            }
+            animate();
+        }
+
+        // Mouse move handler
+        container.addEventListener('mousemove', (e) => {
+            if (carouselData.length === 0) return;
+            
+            mouseX = e.clientX;
+            
+            const normalizedX = (mouseX / window.innerWidth) - 0.5;
+            targetRotation = normalizedX * Math.PI * 2;
+        });
+
+        // Initialize
+        loadImages();
+    </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+{
+  "items": [
+    {
+      "card": "card/card1.jpg",
+      "background": "bg/bg1.jpg"
+    },
+    {
+      "card": "card/card10.jpg",
+      "background": "bg/bg10.jpg"
+    },
+    {
+      "card": "card/card11.jpg",
+      "background": "bg/bg11.jpg"
+    },
+    {
+      "card": "card/card12.jpg",
+      "background": "bg/bg12.jpg"
+    },
+    {
+      "card": "card/card13.jpg",
+      "background": "bg/bg13.jpg"
+    },
+    {
+      "card": "card/card14.jpg",
+      "background": "bg/bg14.jpg"
+    },
+    {
+      "card": "card/card15.jpg",
+      "background": "bg/bg15.jpg"
+    },
+    {
+      "card": "card/card16.jpg",
+      "background": "bg/bg16.jpg"
+    },
+    {
+      "card": "card/card17.jpg",
+      "background": "bg/bg17.jpg"
+    },
+    {
+      "card": "card/card18.jpg",
+      "background": "bg/bg18.jpg"
+    },
+    {
+      "card": "card/card19.jpg",
+      "background": "bg/bg19.jpg"
+    },
+    {
+      "card": "card/card2.jpg",
+      "background": "bg/bg2.jpg"
+    },
+    {
+      "card": "card/card20.jpg",
+      "background": "bg/bg20.jpg"
+    },
+    {
+      "card": "card/card21.jpg",
+      "background": "bg/bg21.jpg"
+    },
+    {
+      "card": "card/card3.jpg",
+      "background": "bg/bg3.jpg"
+    },
+    {
+      "card": "card/card4.jpg",
+      "background": "bg/bg4.jpg"
+    },
+    {
+      "card": "card/card5.jpg",
+      "background": "bg/bg5.jpg"
+    },
+    {
+      "card": "card/card6.jpg",
+      "background": "bg/bg6.jpg"
+    },
+    {
+      "card": "card/card7.jpg",
+      "background": "bg/bg7.jpg"
+    },
+    {
+      "card": "card/card8.jpg",
+      "background": "bg/bg8.jpg"
+    },
+    {
+      "card": "card/card9.jpg",
+      "background": "bg/bg9.jpg"
+    }
+  ]
+}
