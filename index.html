@@ -79,18 +79,20 @@
 
         .card-label {
             position: absolute;
-            top: 20px;
-            left: 20px;
-            background: rgba(0, 0, 0, 0.7);
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
             color: white;
-            padding: 10px 20px;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: 600;
+            padding: 8px 16px;
+            font-size: 18px;
+            font-weight: 700;
             letter-spacing: 0.5px;
-            backdrop-filter: blur(10px);
             z-index: 10;
             pointer-events: none;
+            text-align: center;
+            white-space: nowrap;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9),
+                         0 0 20px rgba(0, 0, 0, 0.8);
         }
 
         .instructions {
@@ -173,7 +175,6 @@
 
         let musicPlaying = false;
 
-        // Music control
         musicControl.addEventListener('click', () => {
             if (musicPlaying) {
                 bgMusic.pause();
@@ -186,7 +187,6 @@
             }
         });
 
-        // Auto-play music on first interaction
         let firstInteraction = true;
         container.addEventListener('mousedown', () => {
             if (firstInteraction) {
@@ -314,7 +314,6 @@
             animate();
         }
 
-        // Drag controls
         container.addEventListener('mousedown', (e) => {
             isDragging = true;
             startX = e.clientX;
@@ -337,7 +336,6 @@
             isDragging = false;
         });
 
-        // Touch support for mobile
         container.addEventListener('touchstart', (e) => {
             isDragging = true;
             startX = e.touches[0].clientX;
